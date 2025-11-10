@@ -1,0 +1,260 @@
+:root {
+    --navbar-bg: #ffffff;
+    --nav-link-color: #333;
+    --nav-link-hover: #007bff;
+    --cta-bg: #007bff;
+    --cta-color: #ffffff;
+    --cta-hover-bg: #0056b3;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --navbar-height: 70px;
+    --black: #000f08;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: var(--navbar-height);
+}
+
+.header {
+    background-color: var(--navbar-bg);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--nav-link-color);
+    text-decoration: none;
+}
+
+/* 5. Nav Menu & Links */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--nav-link-color);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--nav-link-hover);
+}
+.nav-cta {
+    color: grey; /* Make sure --cta-color is light (e.g., #ffffff) */
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    /* 1. Set a semi-transparent background */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* 2. Add the blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    /* 3. Add a subtle border to define the edge */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* We transition transform and box-shadow for the hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-cta:hover {
+    color: var(--cta-color); /* Keep text color */
+    /* --- 1. The Raise Effect --- */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    background-image:
+        /* 1. Inner glass (same as base state) */
+            linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+                /* 2. The gradient for the border */
+            linear-gradient(to right, #8e44ad, #c0392b);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+/* 7. Hamburger Menu Icon */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+}
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--nav-link-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/*------------HERO SECTION-----!*/
+/* --- 1. Hero Section Wrapper --- */
+.hero-section {
+    position: relative; /* Crucial for absolute positioning children */
+    min-height: 70vh;  /* Viewport height - adjust as needed */
+    padding: 3rem 2rem;
+    /*  background */
+    background: grey ;
+    /* This ensures nothing spills out, especially the semicircle */
+    overflow: hidden;
+    /* Font styles */
+    font-family: "Apple SD Gothic Neo", serif;
+    color: #000f08; 
+}
+
+/* --- 2. Hero Content (Text) --- */
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px; /* Adjust for your site width */
+    margin: 0 auto;
+    position: relative; /* Ensures text stays above the image */
+    z-index: 2;
+}
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+.hero-text-left h2 {
+    font-size: 2.5rem;
+    font-weight: 300; /* The font in the example is very thin */
+    line-height: 1.3;
+}
+.hero-text-right {
+    text-align: right;
+    max-width: 250px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+/* Recreating the two separate underlines */
+.hero-text-right p {
+    display: inline-block;
+    border-bottom: 1px solid #4f3f38;
+    padding-bottom: 2px;
+    margin-bottom: 5px;
+}
+.hero-text-right span {
+    display: inline-block;
+    border-bottom: 1px solid #4f3f38;
+    padding-bottom: 2px;
+}
+
+/* --- 3. Semicircle Image (The Core Effect) --- */
+
+/* This is the <div> that creates the semicircle shape */
+.hero-image-container {
+    position: absolute;
+    bottom: 0;        /* Pins it to the bottom of the hero section */
+    left: 50%;        /* Centers it horizontally */
+    transform: translateX(-50%); /* Fine-tunes the centering */
+    width: 60vw;
+    height: 30vw;
+    /* Set max sizes for large screens */
+    max-width: 500px;
+    max-height: 250px;
+    /* === THE MAGIC === */
+    border-top-left-radius: 500px;  
+    border-top-right-radius: 500px;
+    overflow: hidden;
+    /* === END MAGIC === */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Sits above the gradient (z-index: 0) but below text (z-index: 2) */
+    z-index: 1;
+    /* Aligns the image at the bottom of the container */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+/* This is the <img> tag itself */
+.hero-image-container img {
+    width: 100%; /* Make image slightly smaller than its container */
+    height: 100%;
+    object-fit: contain;
+    z-index: 10;
+}
+/* This CSS creates the blinking typing cursor */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: #333; /* Cursor color */
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+/*------------Responsivness------------*/
+
+/* 8. Mobile Responsive Styles (max-width: 768px) */
+@media(max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    /* Animate hamburger to "X" */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    /* Mobile Menu */
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Start off-screen */
+        top: var(--navbar-height);
+        flex-direction: column;
+        background-color: var(--navbar-bg);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        gap: 0;
+        padding-bottom: 1rem;
+    }
+    .nav-menu.active {
+        left: 0; /* Slide in */
+    }
+    .nav-item {
+        width: 100%;
+    }
+    .nav-link {
+        display: block;
+        padding: 1.2rem;
+        border-bottom: 1px solid #eee;
+    }
+    .nav-link:hover {
+        background-color: #f9f9f9;
+    }
+    /* Style the CTA for mobile menu */
+    .nav-item-cta {
+        border-bottom: none;
+    }
+    .nav-item-cta .nav-link {
+        display: inline-block; /* Make it a button, not full-width */
+        width: auto;
+        margin-top: 1rem;
+        padding: 0.8rem 2rem;
+        border-bottom: none; /* Remove the link border */
+    }
+    .nav-item-cta .nav-link:hover {
+        background-color: var(--cta-hover-bg); /* Keep hover effect */
+        color: var(--cta-color);
+    }
+}

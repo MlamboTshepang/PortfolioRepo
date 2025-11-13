@@ -197,6 +197,15 @@
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+footer{
+    position: absolute;
+    bottom: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
 /*------------Responsivness------------*/
 
 /* 8. Mobile Responsive Styles (max-width: 768px) */

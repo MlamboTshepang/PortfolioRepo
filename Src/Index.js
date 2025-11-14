@@ -12,9 +12,10 @@ const PORT = process.env.PORT || 3000;
 //--------middleware----------
 app.set("view engine", "ejs");
 // 4. Use path.join() for a reliable path
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'Views'));
 
 app.use(express.static("public"));
+app.use(express.static(path.join(__dirname,'..', 'public')));
 app.use(express.urlencoded({extended: true}));
 // 5. Removed the incorrect "app.use(ejs)" line
 
